@@ -5,6 +5,7 @@
 	--fontColorBlack: #000;
 	--hover: #adadad;
 	--bgColor: #000000;
+	--whiteTheme: #f3f3f3;
 	--fontSize: 16px;
 	--fontWeight: 500;
 }
@@ -13,9 +14,9 @@
 html{scroll-behavior: smooth;}
 
 body{
-	background: var(--bgColor);
+	background: var(--whiteTheme);
 	position: relative;
-	color: var(--fontColorOrange);
+	color: var(--fontColorBlack);
 	font-size: var(--fontSize);
 	font-weight: 500;
 }
@@ -55,22 +56,22 @@ body{
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
-	background-color: #fff;
-	box-shadow: 0 0 20px #fff;
+	background-color: rgb(255, 153, 0);
+	box-shadow: 0 0 20px rgb(255, 153, 0);
 	transition: all 0.2s ease;
 	cursor: pointer;
 }
 
 .lamp-light:active{top: 32px;}
 
-body.white{
-	background-color: #f1f1f1;
-	color: var(--fontColorBlack);
+body.dark{
+	background-color: var(--bgColor);
+	color: var(--fontColorOrange);
 }
 
-.lamp-light.orange{
-	background-color: rgb(255, 153, 0);
-	box-shadow: 0 0 20px rgb(255, 153, 0);
+.lamp-light.white{
+	background-color: #fff;
+	box-shadow: 0 0 20px #fff;
 }
 
 .wrapper-header{padding: 30px 20px 0;}
@@ -114,10 +115,10 @@ header > div:last-child{
 	height: 110px;
 	border-radius: 50%;
 	padding: 2px;
-	border: 2px solid var(--fontColorOrange); 
+	border: 2px solid var(--fontColorBlack); 
 }
 
-.section .avatar > img.border{border: 2px solid var(--fontColorBlack);}
+.section .avatar > img.border{border: 2px solid var(--fontColorOrange);}
 .section .avatar{margin-bottom: 8px;}
 
 .section .description{
@@ -200,10 +201,10 @@ header,
     align-items: center;
 	justify-content: space-between;
     border-radius: 7px;
-    background-color: rgb(44, 44, 44);
+    background-color: #fff;
 }
 
-.skills .projects div .container.lighter{background-color: #fff;}
+.skills .projects div .container.darker{background-color: rgb(44, 44, 44);}
 .skills .projects div .container:not(:last-of-type){margin-right: 20px;}
 
 .skills .projects div .container > div{
@@ -222,12 +223,24 @@ header,
     justify-content: space-evenly;
 }
 
-.skills .projects div .container .links .proj-btn > a{
-	opacity: 1;
-	transition: opacity .4s ease;
+.skills .projects div .container .links .proj-btn{
+	width: 85px;
+    padding: 7px;
+    border: 1px solid var(--fontColorOrange);
+    border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.2s ease;
 }
 
-.skills .projects div .container .links .proj-btn > a:hover{opacity: 0.7;}
+.skills .projects div .container .links .proj-btn:hover{
+	background-color: var(--fontColorBlack);
+	border: 1px solid var(--fontColorBlack);
+	color: #fff;
+}
+
+.skills .projects div .container .links .proj-btn.lighter:hover{
+	background-color: var(--fontColorOrange);
+}
 
 /*==================== FOOTER ====================*/
 .contact{
@@ -248,11 +261,11 @@ header,
 	font-size: 25px;
 	display: flex;
 	align-items: center;
-	opacity: 1;
-	transition: opacity .4s ease;
+	transition: color .2s ease;
 }
 
-.contact .social div:hover{opacity: 0.7;}
+.contact .social div:hover{color: var(--fontColorOrange);}
+.contact .social div.hover-light:hover{color: #fff;}
 .contact .social div:not(:last-of-type){margin-right: 20%;}
 
 .section .description > h2:first-child,
@@ -295,7 +308,6 @@ header,
 	header,
 	.section, 
 	.skills{margin-bottom: 8%;}
-
 	.skills .set{
 		display: grid;
 		grid-template-columns: repeat(5,1fr);
@@ -317,15 +329,22 @@ header,
 		width: 90%;
 		margin: 0 auto 8%;
 	}
-	.skills .projects div .container {height: 100%;}
-	.skills .projects div .container:not(:last-of-type) {margin: 0;}
-	.skills .projects div .container > .project-img, .project-desription {margin-bottom: 10px;}
-	.skills .projects div .container .project-img > img{width: 100%;}
 	.skills .projects > div{
 		display: grid;
 		grid-template-columns: repeat(2,1fr);
 		grid-gap: 30px;
+		overflow: visible;
 	}
+	.skills .projects div .container {
+		height: fit-content;
+		position: relative;
+		top: 0;
+		transition: top 0.5s ease;
+	}
+	.skills .projects div .container:hover{top: -12px;}
+	.skills .projects div .container:not(:last-of-type) {margin: 0;}
+	.skills .projects div .container > .project-img, .project-desription {margin-bottom: 10px;}
+	.skills .projects div .container .project-img > img{width: 100%;}
 }
 
 @media screen and (min-width: 1200px){
