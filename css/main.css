@@ -25,7 +25,7 @@ body{
 	position: absolute;
 	top: 20px;
 	top: 0;
-	right: -10px;
+	right: 0px;	/* -10px */
 	transform: translateX(-50%);
 	width: 50px;
 }
@@ -64,6 +64,27 @@ body{
 
 .lamp-light:active{top: 32px;}
 
+.lamp > .sun,
+.lamp > .moon{position: absolute;}
+
+.lamp > .sun{
+	top: 34px;
+	left: -13px;
+	font-size: 14px;
+	color: var(--fontColorOrange);
+}
+
+.lamp > .sun.off-sun{color: #fff;}
+
+.lamp > .moon{
+	top: 33px;
+	right: -6px;
+	font-size: 15px;
+	color: var(--fontColorBlack);
+}
+
+.lamp > .moon.on-moon{color: var(--fontColorOrange);}
+
 body.dark{
 	background-color: var(--bgColor);
 	color: var(--fontColorOrange);
@@ -90,7 +111,7 @@ header > div:first-child{
     align-items: center;
 	font-size: 20px;
 	font-weight: 800;
-	margin-left: 5%;
+	/* margin-left: 5%; */
 }
 
 header > div:last-child{
